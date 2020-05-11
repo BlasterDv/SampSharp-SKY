@@ -1,5 +1,4 @@
 # SampSharp SKY
-=====================
 
 Wrapper of the SKY plugin for [SampSharp]
 
