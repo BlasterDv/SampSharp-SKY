@@ -45,6 +45,6 @@ namespace SampSharp.SKY.Entities
         /// <returns>True on success, False otherwise.</returns>
         bool TextDrawSetStrForPlayer(EntityId textdraw, EntityId player, string str);
         bool TextDrawSetPosition(TextDraw textdraw, Vector2 position);
-        bool PlayerTextDrawSetPosition(Player player, PlayerTextDraw textdraw, Vector2 position);
+        bool PlayerTextDrawSetPosition(EntityId player, PlayerTextDraw textdraw, Vector2 position);
     }
 }
