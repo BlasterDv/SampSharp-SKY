@@ -178,12 +178,15 @@ namespace SampSharp.SKY.Entities
         }
 
         /// <inheritdoc />
-        public bool PlayerTextDrawSetPosition(Player player, PlayerTextDraw textdraw, Vector2 position)
+        public bool PlayerTextDrawSetPosition(EntityId player, PlayerTextDraw textdraw, Vector2 position)
         {
+            if (!player.IsOfType(SampEntities.PlayerType))
+                throw new InvalidEntityArgumentException(nameof(player), SampEntities.PlayerType);
+
             if (textdraw.Entity.Handle == NativePlayerTextDraw.InvalidId)
                 throw new EntityCreationException();
 
-            var success = _native.PlayerTextDrawSetPosition(player.Entity.Handle, textdraw.Entity.Handle, position.X, position.Y);
+            var success = _native.PlayerTextDrawSetPosition(player, textdraw.Entity.Handle, position.X, position.Y);
             return success;
         }
         #endregion
