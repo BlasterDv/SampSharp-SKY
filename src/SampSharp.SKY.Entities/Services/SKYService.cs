@@ -183,10 +183,12 @@ namespace SampSharp.SKY.Entities
             if (!player.IsOfType(SampEntities.PlayerType))
                 throw new InvalidEntityArgumentException(nameof(player), SampEntities.PlayerType);
 
-            if (textdraw.Entity.Handle == NativePlayerTextDraw.InvalidId)
+            int id = textdraw.Entity / SampLimits.MaxPlayers;
+
+            if (id == NativePlayerTextDraw.InvalidId)
                 throw new EntityCreationException();
 
-            var success = _native.PlayerTextDrawSetPosition(player, textdraw.Entity.Handle, position.X, position.Y);
+            var success = _native.PlayerTextDrawSetPosition(player, id, position.X, position.Y);
             return success;
         }
         #endregion
