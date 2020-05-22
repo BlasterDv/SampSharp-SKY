@@ -1,6 +1,7 @@
 #load "./cake/SharpBuild.cake"
 
 var build = new SharpBuild(Context, "BlasterDv", "SampSharp-SKY-Wrapper",
+    "SampSharp.SKY"
     "SampSharp.SKY.Entities");
 
 Task("Clean")
