@@ -1,4 +1,4 @@
-﻿// SampSharp.SKY.Entities
+﻿// SampSharp.SKY
 // Copyright 2020 BlasterDv
 // 
 // Licensed under the Apache License, Version 2.0 throw new ArgumentNullException(nameof(player));(the "License");
@@ -14,21 +14,32 @@
 // limitations under the License.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.World;
 using SampSharp.SKY;
 using SampSharp.SKY.Definitions;
 
+
+[assembly: SampSharpExtension(typeof(Sky))]
+
 namespace SampSharp.SKY
 {
     /// <summary>
     /// Represents a service for control the SKY.
     /// </summary>
-    public partial class Sky
+    public partial class Sky : Extension, ISky
     {
+        public BaseMode GameMode { get; private set; }
+
+        public override void LoadServices(BaseMode gameMode)
+        {
+            // Add the sky service to the service provider.
+            GameMode = gameMode;
+            gameMode.Services.AddService<ISky>(this);
+
+            base.LoadServices(gameMode);
+        }
 
         #region Others
 
@@ -117,7 +128,7 @@ namespace SampSharp.SKY
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
 
-            if(forplayer == null)
+            if (forplayer == null)
                 throw new ArgumentNullException(nameof(forplayer));
 
             var success = Internal.ClearAnimationsForPlayer(player.Id, forplayer.Id);

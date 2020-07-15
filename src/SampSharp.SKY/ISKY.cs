@@ -1,7 +1,7 @@
 ﻿// SampSharp.SKY
 // Copyright 2020 BlasterDv
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 throw new ArgumentNullException(nameof(player));(the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
@@ -13,16 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace SampSharp.SKY.Definitions
+using SampSharp.GameMode;
+
+namespace SampSharp.SKY
 {
-    public enum SyncType
+    /// <summary>
+    /// Represents a service for control the SKY.
+    /// </summary>
+    public interface ISky : IService
     {
-        E_PLAYER_SYNC = 0,
-        E_AIM_SYNC,
-        E_VEHICLE_SYNC,
-        E_PASSENGER_SYNC,
-        E_SPECTATING_SYNC,
-        E_LAST_SYNC,
-        E_ALL_SYNC
     }
 }
