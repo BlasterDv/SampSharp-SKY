@@ -14,6 +14,10 @@
 // limitations under the License.
 
 using SampSharp.GameMode;
+using SampSharp.GameMode.World;
+using SampSharp.GameMode.Display;
+
+using SampSharp.SKY.Definitions;
 
 namespace SampSharp.SKY
 {
@@ -22,5 +26,20 @@ namespace SampSharp.SKY
     /// </summary>
     public interface ISky : IService
     {
+        void SpawnPlayerForWorld(BasePlayer player);
+        bool FreezeSyncPacket(BasePlayer player, SyncType type = SyncType.E_PLAYER_SYNC, bool toggle = false);
+        bool SetFakeHealth(BasePlayer player, int health);
+        bool SetFakeArmour(BasePlayer player, int amount);
+        bool SetFakeFacingAngle(BasePlayer player, float angle = 0x7FFFFFFFf);
+        void SetKnifeSync(int toggle);
+        bool SendDeath(BasePlayer player);
+        bool SetLastAnimationData(BasePlayer player, int data);
+        bool SendLastSyncPacket(BasePlayer player, BasePlayer toplayer, SyncType type = SyncType.E_PLAYER_SYNC, int animation = 0);
+        bool ClearAnimationsForPlayer(BasePlayer player, BasePlayer forplayer);
+        void SetDisableSyncBugs(int toggle);
+        bool SetKeySyncBlocked(BasePlayer player, int toggle);
+        bool TextDrawSetStrForPlayer(TextDraw textdraw, BasePlayer player, string str);
+        bool TextDrawSetPosition(TextDraw textdraw, Vector2 position);
+        bool PlayerTextDrawSetPosition(BasePlayer player, PlayerTextDraw textdraw, Vector2 position);
     }
 }
