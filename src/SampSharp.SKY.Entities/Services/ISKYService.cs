@@ -43,7 +43,7 @@ namespace SampSharp.SKY.Entities
         /// <param name="player">The player.</param>
         /// <param name="str">The text.</param>
         /// <returns>True on success, False otherwise.</returns>
-        bool TextDrawSetStrForPlayer(EntityId textdraw, EntityId player, string str);
+        bool TextDrawSetStrForPlayer(TextDraw textdraw, EntityId player, string str);
         bool TextDrawSetPosition(TextDraw textdraw, Vector2 position);
         bool PlayerTextDrawSetPosition(EntityId player, PlayerTextDraw textdraw, Vector2 position);
     }

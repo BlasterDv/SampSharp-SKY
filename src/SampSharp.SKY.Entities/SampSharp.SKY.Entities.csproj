@@ -2,9 +2,16 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageIconUrl>https://github.com/ikkentim/SampSharp/raw/master/sampsharp.png</PackageIconUrl>
         <AssemblyName>SampSharp.SKY.Entities</AssemblyName>
         <RootNamespace>SampSharp.SKY.Entities</RootNamespace>
-        <Version>0.1.0</Version>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/BlasterDv/SampSharp-SKY</PackageProjectUrl>
+		<Title>SampSharp Entities SKY</Title>
+		<Description>Wrapper of the SKY plugin for SampSharp Entities.</Description>
+		<Version>0.1.1</Version>
+		<AssemblyVersion>0.1.1</AssemblyVersion>
+		<FileVersion>0.1.1</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -154,15 +154,15 @@ namespace SampSharp.SKY.Entities
         #region TextDraw
 
         /// <inheritdoc />
-        public bool TextDrawSetStrForPlayer(EntityId textdraw, EntityId player, string str)
+        public bool TextDrawSetStrForPlayer(TextDraw textdraw, EntityId player, string str)
         {
             if (!player.IsOfType(SampEntities.PlayerType))
                 throw new InvalidEntityArgumentException(nameof(player), SampEntities.PlayerType);
 
-            if (textdraw == NativeTextDraw.InvalidId)
+            if (textdraw.Entity.Handle == NativeTextDraw.InvalidId)
                 throw new EntityCreationException();
 
-            var success = _native.TextDrawSetStrForPlayer(textdraw.Handle, player.Handle, str);
+            var success = _native.TextDrawSetStrForPlayer(textdraw.Entity.Handle, player.Handle, str);
             return success;
         }
 
