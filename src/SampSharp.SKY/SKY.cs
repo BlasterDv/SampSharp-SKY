@@ -17,34 +17,19 @@ using System;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.World;
-using SampSharp.SKY;
 using SampSharp.SKY.Definitions;
-
-
-[assembly: SampSharpExtension(typeof(Sky))]
 
 namespace SampSharp.SKY
 {
     /// <summary>
     /// Represents a service for control the SKY.
     /// </summary>
-    public partial class Sky : Extension, ISky
+    public partial class Sky 
     {
-        public BaseMode GameMode { get; private set; }
-
-        public override void LoadServices(BaseMode gameMode)
-        {
-            // Add the sky service to the service provider.
-            GameMode = gameMode;
-            gameMode.Services.AddService<ISky>(this);
-
-            base.LoadServices(gameMode);
-        }
-
         #region Others
 
         /// <inheritdoc />
-        public void SpawnPlayerForWorld(BasePlayer player)
+        public static void SpawnPlayerForWorld(BasePlayer player)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -52,7 +37,7 @@ namespace SampSharp.SKY
             Internal.SpawnPlayerForWorld(player.Id);
         }
         /// <inheritdoc />
-        public bool FreezeSyncPacket(BasePlayer player, SyncType type = SyncType.E_PLAYER_SYNC, bool toggle = false)
+        public static bool FreezeSyncPacket(BasePlayer player, SyncType type = SyncType.E_PLAYER_SYNC, bool toggle = false)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -61,7 +46,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool SetFakeHealth(BasePlayer player, int health)
+        public static bool SetFakeHealth(BasePlayer player, int health)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -70,7 +55,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool SetFakeArmour(BasePlayer player, int amount)
+        public static bool SetFakeArmour(BasePlayer player, int amount)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -79,7 +64,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool SetFakeFacingAngle(BasePlayer player, float angle = 0x7FFFFFFFf)
+        public static bool SetFakeFacingAngle(BasePlayer player, float angle = 0x7FFFFFFFf)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -88,12 +73,12 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public void SetKnifeSync(int toggle)
+        public static void SetKnifeSync(int toggle)
         {
             Internal.SetKnifeSync(toggle);
         }
         /// <inheritdoc />
-        public bool SendDeath(BasePlayer player)
+        public static bool SendDeath(BasePlayer player)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -102,7 +87,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool SetLastAnimationData(BasePlayer player, int data)
+        public static bool SetLastAnimationData(BasePlayer player, int data)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -111,7 +96,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool SendLastSyncPacket(BasePlayer player, BasePlayer toplayer, SyncType type = SyncType.E_PLAYER_SYNC, int animation = 0)
+        public static bool SendLastSyncPacket(BasePlayer player, BasePlayer toplayer, SyncType type = SyncType.E_PLAYER_SYNC, int animation = 0)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -123,7 +108,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool ClearAnimationsForPlayer(BasePlayer player, BasePlayer forplayer)
+        public static bool ClearAnimationsForPlayer(BasePlayer player, BasePlayer forplayer)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -135,12 +120,12 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public void SetDisableSyncBugs(int toggle)
+        public static void SetDisableSyncBugs(int toggle)
         {
             Internal.SetDisableSyncBugs(toggle);
         }
         /// <inheritdoc />
-        public bool SetInfiniteAmmoSync(BasePlayer player, int toggle)
+        public static bool SetInfiniteAmmoSync(BasePlayer player, int toggle)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -149,7 +134,7 @@ namespace SampSharp.SKY
             return success;
         }
         /// <inheritdoc />
-        public bool SetKeySyncBlocked(BasePlayer player, int toggle)
+        public static bool SetKeySyncBlocked(BasePlayer player, int toggle)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -162,7 +147,7 @@ namespace SampSharp.SKY
         #region TextDraw
 
         /// <inheritdoc />
-        public bool TextDrawSetStrForPlayer(TextDraw textdraw, BasePlayer player, string str)
+        public static bool TextDrawSetStrForPlayer(TextDraw textdraw, BasePlayer player, string str)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -175,7 +160,7 @@ namespace SampSharp.SKY
         }
 
         /// <inheritdoc />
-        public bool TextDrawSetPosition(TextDraw textdraw, Vector2 position)
+        public static bool TextDrawSetPosition(TextDraw textdraw, Vector2 position)
         {
             if (textdraw == null)
                 throw new ArgumentNullException(nameof(textdraw));
@@ -186,7 +171,7 @@ namespace SampSharp.SKY
         }
 
         /// <inheritdoc />
-        public bool PlayerTextDrawSetPosition(BasePlayer player, PlayerTextDraw textdraw, Vector2 position)
+        public static bool PlayerTextDrawSetPosition(BasePlayer player, PlayerTextDraw textdraw, Vector2 position)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
